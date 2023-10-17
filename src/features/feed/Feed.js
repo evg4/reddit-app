@@ -2,29 +2,37 @@ import Post from "../../components/Post/Post";
 import { sampleJson } from "./sampleData";
 
 function Feed() {
-  //the first comment
-  console.log(sampleJson[1].data.children[0].data.body);
-  //the second comment
-  console.log(sampleJson[1].data.children[1].data.body);
-  //this is a reply to the first comment, hence the nested location
-  console.log(
-    sampleJson[1].data.children[0].data.replies.data.children[0].data.body
-  );
-
+  //console.log(sampleJson[0].data.children[0].data.preview.images[0].source.url);
   return (
     <>
-      {/*the title of the post */}
-      <p>{sampleJson[0].data.children[0].data.title}</p>
-      <ul>
-        {/*mapping over the array containing all the comments to make them into list items
-        note this does not include replies to comments, which are more nested */}
-        {sampleJson[1].data.children.map((comment) => {
-          return <li>{comment.data.body}</li>;
-        })}
-      </ul>
-      <p>helol</p>
+      <Post
+        title={sampleJson[0].data.children[0].data.title}
+        comments={sampleJson[1].data.children}
+        img={sampleJson[0].data.children[0].data.url_overridden_by_dest}
+      />
     </>
   );
 }
 
 export default Feed;
+
+// post title
+// sampleJson[0].data.children[0].data.title
+
+// id for each post
+// sampleJson[0].data.children[0].data.id
+
+// all comments
+// sampleJson[1].data.children
+
+// first comment:
+// sampleJson[1].data.children[0].data.body
+
+// first comment id:
+// sampleJson[1].data.children[0].data.id
+
+// second comment:
+// sampleJson[1].data.children[1].data.body
+
+// reply to 1st comment:
+// sampleJson[1].data.children[0].data.replies.data.children[0].data.body

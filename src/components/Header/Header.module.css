@@ -1,0 +1,14 @@
+.div {
+  background-color: rgb(121, 5, 5);
+  padding: 20px;
+}
+
+.h1 {
+  text-align: center;
+  color: lightgrey;
+}
+
+.span {
+  font-style: italic;
+  color: rgba(211, 211, 211, 0.733);
+}
