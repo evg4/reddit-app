@@ -1,38 +1,49 @@
-import Post from "../../components/Post/Post";
-import { sampleJson } from "./sampleData";
+import PostPreview from "../../components/PostPreview/PostPreview";
+import { allPostsData } from "../../components/PostPreview/allPostsData";
+import styles from "./Feed.module.css";
 
 function Feed() {
-  //console.log(sampleJson[0].data.children[0].data.preview.images[0].source.url);
+  const sampleArr = [];
+  for (let i = 1; i < 25; i++) {
+    sampleArr.push(allPostsData.data.children[i]);
+  }
+
   return (
     <>
-      <Post
-        title={sampleJson[0].data.children[0].data.title}
-        comments={sampleJson[1].data.children}
-        img={sampleJson[0].data.children[0].data.url_overridden_by_dest}
-      />
+      <ul className={styles.ul}>
+        {sampleArr.map((post) => {
+          return (
+            <li key={post.data.id}>
+              <PostPreview
+                title={post.data.title}
+                img={post.data.url_overridden_by_dest}
+                //url={post.data.permalink}
+              />
+            </li>
+          );
+        })}
+      </ul>
     </>
   );
 }
 
 export default Feed;
 
-// post title
-// sampleJson[0].data.children[0].data.title
+/*
 
-// id for each post
-// sampleJson[0].data.children[0].data.id
+<Post
+  title={sampleJson[0].data.children[0].data.title}
+  comments={sampleJson[1].data.children}
+  img={sampleJson[0].data.children[0].data.url_overridden_by_dest}
+ />
 
-// all comments
-// sampleJson[1].data.children
+*/
 
-// first comment:
-// sampleJson[1].data.children[0].data.body
+//array of all posts
+//allPostsData.data.children
 
-// first comment id:
-// sampleJson[1].data.children[0].data.id
+//to get title of first post:
+//allPostsData.data.children[1].data.title
 
-// second comment:
-// sampleJson[1].data.children[1].data.body
-
-// reply to 1st comment:
-// sampleJson[1].data.children[0].data.replies.data.children[0].data.body
+//to get title of second post:
+//allPostsData.data.children[2].data.title
